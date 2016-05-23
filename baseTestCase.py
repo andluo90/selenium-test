@@ -12,6 +12,7 @@ class BaseTestCase(TestCase):
     s = WebdriverFactory.createChromeDriver() #driver
     p = TestConfig()
 
+
     @classmethod
     def setUpClass(cls):
         "检测是否已登录，如果未登录，则登录后并且保存登录态"
@@ -20,7 +21,7 @@ class BaseTestCase(TestCase):
             user = cls.p.get('user')
             pwd = cls.p.get('pwd')
 
-            cls.s.get(testUrl)
+            cls.s.open(testUrl)
 
             with open("cookies.pkl","rb") as f:
                 cookies = pickle.load(f)
@@ -28,7 +29,7 @@ class BaseTestCase(TestCase):
                 print cookie
                 cls.s.add_cookie(cookie)
 
-            cls.s.get(testUrl+'/my/userCenter/')
+            cls.s.open(testUrl+'/my/userCenter/')
 
             if cls.s.title == u'登录注册_果盘游戏':
                 #登录代码并保存cookie
@@ -36,18 +37,17 @@ class BaseTestCase(TestCase):
                 cls.s.find_element_by_id("upwd").send_keys(pwd)
                 cls.s.find_element_by_css_selector('.loginBtn').click()
                 time.sleep(3)
-
                 if cls.s.title == u'个人中心首页_果盘游戏个人中心':
                     with open('cookies.pkl','wb') as cookie_file:
-                        pickle.dump(cls.s.get_cookies(),cookie_file)
+                        pickle.dump(cls.s.open_cookies(),cookie_file)
                 else:
                     print 'login fail!'
 
             elif cls.s.title == u'个人中心首页_果盘游戏个人中心':
-                #登录成功
+
                 pass
         except WebDriverException,e:
-            print('aaaa')
+            print e
         except AssertionError,e:
             print('bbbb')
     @classmethod

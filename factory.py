@@ -2,6 +2,7 @@
 __author__ = 'andluo'
 from selenium import webdriver
 from testConfig import TestConfig
+from selenium2 import Selenium2
 
 p = TestConfig()
 
@@ -28,4 +29,4 @@ class WebdriverFactory:
         chromeOptions = webdriver.ChromeOptions()
         chromeOptions.add_experimental_option("mobileEmulation",DeviceFactory.creatAndroidDev())
         driver = webdriver.Chrome(executable_path=p.get('driver_path'),chrome_options=chromeOptions)
-        return driver
+        return Selenium2(driver)
