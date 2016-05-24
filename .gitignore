@@ -6,3 +6,5 @@
 screenshot
 report
 .idea
+*.png
+cookies.pkl
