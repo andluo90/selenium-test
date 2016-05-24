@@ -13,3 +13,4 @@ class TestConfig(object):
     def get(self,option):
         return self.cf.get(self.baseSection,option)
 
+

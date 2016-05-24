@@ -1,6 +1,7 @@
 #-*- coding:UTF-8 -*-
 __author__ = 'andluo'
 import time
+from testLog import log
 
 class Selenium2(object):
     "重新封装Webdriver"
@@ -10,18 +11,24 @@ class Selenium2(object):
 
     def click(self,cssSelector):
         self.driver.find_element_by_css_selector(cssSelector).click()
+        log.info("click "+cssSelector)
 
     def type(self,cssSelector,content):
         self.driver.find_element_by_css_selector(cssSelector).send_keys(content)
+        log.info("type "+cssSelector)
 
     def getText(self,cssSelector):
-        return self.driver.find_element_by_css_selector(cssSelector).text
+        text = self.driver.find_element_by_css_selector(cssSelector).text
+        log.info("getText "+text)
+        return text
 
     def open(self,url):
         self.driver.get(url)
+        log.info("open "+url)
 
     def screenshot(self,file):
         self.driver.get_screenshot_as_file(file)
+        log.info("screenshot "+file)
 
     def sleep(self,second):
         time.sleep(second)
@@ -34,8 +41,11 @@ class Selenium2(object):
 
     def close(self):
         self.driver.close()
+        log.info("driver close.")
 
     @property
     def title(self):
-        return self.driver.title
+        title = self.driver.title.encode('UTF-8')
+        log.info("title "+title)
+        return title
 
