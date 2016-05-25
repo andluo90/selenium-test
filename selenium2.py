@@ -27,7 +27,7 @@ class Selenium2(object):
         log.info("open "+url)
 
     def screenshot(self,file):
-        self.driver.get_screenshot_as_file(file)
+        self.driver.get_screenshot_as_file('./screenshot/'+file)
         log.info("screenshot "+file)
 
     def sleep(self,second):

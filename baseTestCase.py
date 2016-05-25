@@ -6,6 +6,7 @@ from factory import WebdriverFactory
 from unittest import  TestCase
 from testConfig import TestConfig
 from testLog import  log
+import sys
 
 class BaseTestCase(TestCase):
 
@@ -42,5 +43,8 @@ class BaseTestCase(TestCase):
         pass
 
     def tearDown(self):
-        pass
+        if sys.exc_info()[0]:
+            log.error(sys.exc_info()[0])
+            self.s.screenshot(self._testMethodName+'.png')
+
 
