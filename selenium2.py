@@ -1,6 +1,6 @@
 #-*- coding:UTF-8 -*-
 __author__ = 'andluo'
-import time
+import time,os
 from testLog import log
 
 class Selenium2(object):
@@ -27,7 +27,10 @@ class Selenium2(object):
         log.info("open "+url)
 
     def screenshot(self,file):
-        self.driver.get_screenshot_as_file('./screenshot/'+file)
+        str_time = time.strftime("%Y-%m-%d",time.localtime())
+        if not os.path.exists('./screenshot/'+str_time):
+            os.mkdir('./screenshot/'+str_time)
+        self.driver.get_screenshot_as_file('./screenshot/'+str_time+'/'+file)
         log.info("screenshot "+file)
 
     def sleep(self,second):

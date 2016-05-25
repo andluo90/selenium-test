@@ -1,12 +1,13 @@
 # -*- encoding:utf-8 -*-
-import logging
+import logging,time
 
 # create logger
 log = logging.getLogger('testLogger')
 log.setLevel(logging.INFO)
 
 # create file handler
-log_path = "./log/log.log"
+str_time = time.strftime("%Y-%m-%d",time.localtime())
+log_path = "./log/"+str_time+".log"
 fh = logging.FileHandler(log_path)
 
 # create formatter

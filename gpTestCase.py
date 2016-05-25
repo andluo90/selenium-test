@@ -7,6 +7,7 @@ from baseTestCase import  BaseTestCase
 
 class GPTestCase(BaseTestCase):
 
+    @unittest.skip('skip.....')
     def test_addGroup(self):
         "test1"
 
@@ -23,7 +24,6 @@ class GPTestCase(BaseTestCase):
 
     def test_33(self):
         pass
-
     def test_44(self):
         self.fail("test...fail....")
 

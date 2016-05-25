@@ -24,27 +24,28 @@ class BaseTestCase(TestCase):
 
         cls.s.open(testUrl)
 
-        cls.s.open(testUrl+'/my/userCenter/')
-
-        if cls.s.title == '登录注册_果盘游戏':
-            #登录代码并保存cookie
-            cls.s.type("#uname",user)
-            cls.s.type("#upwd",pwd)
-            cls.s.click(".loginBtn")
-            cls.s.sleep(3)
-            if '个人中心首页_果盘游戏个人中心' == cls.s.title:
-                log.info("登录成功.")
+        # cls.s.open(testUrl+'/my/userCenter/')
+        #
+        # if cls.s.title == '登录注册_果盘游戏':
+        #     #登录代码并保存cookie
+        #     cls.s.type("#uname",user)
+        #     cls.s.type("#upwd",pwd)
+        #     cls.s.click(".loginBtn")
+        #     cls.s.sleep(3)
+        #     if '个人中心首页_果盘游戏个人中心' == cls.s.title:
+        #         log.info("登录成功.")
 
 
     @classmethod
     def tearDownClass(cls):
         cls.s.close()
+
     def setUp(self):
-        pass
+        log.info(">>>>>>start "+self._testMethodName+" <<<<<<")
 
     def tearDown(self):
         if sys.exc_info()[0]:
-            log.error(sys.exc_info()[0])
+            log.error(sys.exc_info()[1])
             self.s.screenshot(self._testMethodName+'.png')
-
+        log.info(">>>>>>end "+self._testMethodName+" <<<<<<")
 
