@@ -46,6 +46,14 @@ class Selenium2(object):
         self.driver.close()
         log.info("driver close.")
 
+    def quit(self):
+        self.driver.quit()
+        log.info("driver quit.")
+
+    def maxWindow(self):
+        self.driver.maximize_window()
+        log.info("max window.")
+
     @property
     def title(self):
         title = self.driver.title.encode('UTF-8')

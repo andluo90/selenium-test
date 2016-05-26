@@ -2,7 +2,6 @@
 __author__ = 'Administrator'
 import baseTestCase
 import unittest
-from selenium.common.exceptions import WebDriverException
 from baseTestCase import  BaseTestCase
 
 class GPTestCase(BaseTestCase):
@@ -10,7 +9,6 @@ class GPTestCase(BaseTestCase):
     @unittest.skip('skip.....')
     def test_addGroup(self):
         "test1"
-
         s = self.s
         s.open('http://m.guopan.cn/my/userCenter/')
         s.click('.userListaaaa .li0')
