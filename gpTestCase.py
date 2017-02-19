@@ -22,11 +22,7 @@ class GPTestCase(BaseTestCase):
 
     def test_33(self):
         pass
-    def test_44(self):
-        self.fail("test...fail....")
 
-    def test_55(self):
-        pass
 
 if __name__ == '__main__':
     unittest.main()
